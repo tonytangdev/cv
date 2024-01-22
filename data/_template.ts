@@ -11,7 +11,6 @@ const data: Data = {
   location: '',
   bio: '',
   summary: '',
-  avatarUrl: '',
   skills: [],
   education: [
     {
@@ -35,7 +34,7 @@ const data: Data = {
       title: '',
       start: '',
       end: '',
-      description: '',
+      description: [''],
     },
     {
       company: '',
@@ -44,7 +43,7 @@ const data: Data = {
       title: '',
       start: '',
       end: '',
-      description: '',
+      description: [''],
     },
     {
       company: '',
@@ -53,7 +52,7 @@ const data: Data = {
       title: '',
       start: '',
       end: '',
-      description: '',
+      description: [''],
     },
   ],
   contacts: [

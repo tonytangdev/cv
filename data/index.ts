@@ -3,14 +3,14 @@ import { Data } from '@/types/data';
 import { AppConfig, LocaleId } from '@/app.config';
 
 import en from '@/data/en';
-import ja from '@/data/ja';
+import fr from '@/data/fr';
 
 export const getData = () => {
   const data: {
     [key in LocaleId]: Data;
   } = {
     en,
-    ja,
+    fr,
   };
 
   let locale: keyof typeof data;

@@ -23,15 +23,6 @@ export default function Page({
         id="canvas"
         className="flex items-center aspect-video h-[640px] px-32 gap-12"
       >
-        <div>
-          <Image
-            src={data.avatarUrl}
-            alt=""
-            width={240}
-            height={240}
-            className="rounded-xl"
-          />
-        </div>
         <div className="*:leading-none">
           {data.globalName && (
             <p className="text-2xl mb-4 text-muted-foreground">

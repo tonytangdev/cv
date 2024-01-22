@@ -25,7 +25,7 @@ export type Work = {
   title: string;
   start: string;
   end: string;
-  description: string;
+  description: string[];
 };
 
 export type Contact = {
@@ -54,7 +54,6 @@ export type Data = {
   location: string;
   bio: string;
   summary: string;
-  avatarUrl: string;
   skills: string[];
   education: Education[];
   work: Work[];

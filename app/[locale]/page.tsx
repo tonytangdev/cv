@@ -9,7 +9,6 @@ import { getI18n, getStaticParams } from '@/locales/server';
 import { format } from 'date-fns';
 import { Globe } from 'lucide-react';
 import { setStaticParamsLocale } from 'next-international/server';
-import Image from 'next/image';
 
 export default async function Home({
   params: { locale },
@@ -28,15 +27,6 @@ export default async function Home({
           <time>{format(new Date(data.lastUpdatedAt), 'yyyy-MM-dd')}</time>
         </p>
         <div className="flex flex-col sm:flex-row gap-6">
-          <div>
-            <Image
-              src={data.avatarUrl}
-              alt=""
-              width={112}
-              height={112}
-              className="rounded-xl"
-            />
-          </div>
           <div className="*:leading-none">
             {data.globalName && (
               <p className="text-xs mb-2 text-muted-foreground">
@@ -109,7 +99,9 @@ export default async function Home({
                 )}
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                {work.description}
+                {work.description.map((description) => (
+                  <p className='mb-2' key={description}>{description}</p>
+                ))}
               </CardContent>
             </Card>
           );
@@ -153,7 +145,7 @@ export default async function Home({
         </div>
       </Section>
 
-      <Section title={t('projects')}>
+      <Section title={t('projects')} avoidPageBreak>
         <div className="overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {data.projects.map((project) => (
