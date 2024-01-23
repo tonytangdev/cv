@@ -11,7 +11,7 @@ export default function PrintButton() {
         window.print();
       }}
       size="icon"
-      className="rounded-full"
+      className="rounded-full hidden lg:block"
       variant="ghost"
     >
       <Printer size={18} />

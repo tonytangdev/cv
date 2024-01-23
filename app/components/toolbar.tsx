@@ -17,7 +17,7 @@ export default function ToolBar({ data }: { data: Data }) {
       {data.status && <Status status={data.status} />}
       <ContactButtons contacts={data.contacts} />
       {!noFeatures && (
-        <div className="hidden lg:contents">
+        <div className="contents">
           <Separator orientation="vertical" className="h-8 mx-2" />
           {AppConfig.toolbar.locale && <LocaleToggle />}
           {AppConfig.toolbar.theme && <ModeToggle />}
