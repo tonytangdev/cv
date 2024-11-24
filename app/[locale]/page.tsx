@@ -49,6 +49,16 @@ export default async function Home({
         </p>
       </Section>
 
+      <Section title={t('skills')} avoidPageBreak>
+        <div className="flex flex-wrap gap-2">
+          {data.skills.map((skill) => (
+            <Badge variant="outline" key={skill}>
+              {skill}
+            </Badge>
+          ))}
+        </div>
+      </Section>
+
       <Section title={t('workExperience')}>
         {data.work.map((work) => {
           return (
@@ -135,15 +145,7 @@ export default async function Home({
         </Section>
       )}
 
-      <Section title={t('skills')} avoidPageBreak>
-        <div className="flex flex-wrap gap-2">
-          {data.skills.map((skill) => (
-            <Badge variant="outline" key={skill}>
-              {skill}
-            </Badge>
-          ))}
-        </div>
-      </Section>
+
 
       <Section title={t('projects')} avoidPageBreak>
         <div className="overflow-hidden">
