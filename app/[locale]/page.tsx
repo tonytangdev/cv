@@ -62,7 +62,7 @@ export default async function Home({
       <Section title={t('workExperience')}>
         {data.work.map((work) => {
           return (
-            <Card key={work.company} className="print:shadow-none">
+            <Card key={`${work.company}-${work.title}`} className="print:shadow-none">
               <CardHeader>
                 <div className="text-sm text-right tabular-nums text-muted-foreground sm:hidden">
                   {work.start} - {work.end}

@@ -39,9 +39,8 @@ export function ProjectCard({ title, description, techStack, link }: Props) {
           {link && (
             <div className="hidden pb-2 text-sm underline print:block">
               {link?.href
-                .replace('https://', '')
-                .replace('www.', '')
-                .replace('/', '')}
+                .replace(/^https?:\/\/(www\.)?/, '')
+                .replace(/\/$/, '')}
             </div>
           )}
           <CardDescription className="text-sm">{description}</CardDescription>
