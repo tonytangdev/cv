@@ -39,6 +39,7 @@ jobs:
         with:
           node-version: '20'
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v4
         with:
           # Automatically inject basePath in your Next.js configuration file and disable
@@ -62,6 +63,8 @@ jobs:
         run: bun run build
         env:
           REPOSITORY_NAME: ${{ github.event.repository.name }}
+          # Full site URL including the base path, e.g. https://tonytangdev.github.io/cv
+          GITHUB_PAGES_ORIGIN: ${{ steps.pages.outputs.base_url }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

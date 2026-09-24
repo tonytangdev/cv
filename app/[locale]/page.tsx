@@ -1,4 +1,6 @@
 import { ProjectCard } from '@/app/components/project-card';
+import { AppConfig } from '@/app.config';
+import { toPersonJsonLd } from '@/app/lib/structured-data';
 import Section from '@/app/components/section';
 import Status from '@/app/components/status';
 import ToolBar from '@/app/components/toolbar';
@@ -20,12 +22,24 @@ export default async function Home({
 
   const t = await getI18n();
   const data = getData();
+  const jsonLd = toPersonJsonLd(
+    data,
+    AppConfig.host ? `${AppConfig.host}/${locale}` : undefined
+  );
 
   return (
     <main className="container max-w-2xl pt-10 pb-16 sm:py-16 mb-6 print:mb-0 print:py-6 space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <section>
         <p className="text-right italic text-sm mb-4 text-muted-foreground">
-          <time>{format(new Date(data.lastUpdatedAt), 'yyyy-MM-dd')}</time>
+          <time dateTime={format(new Date(data.lastUpdatedAt), 'yyyy-MM-dd')}>
+            {format(new Date(data.lastUpdatedAt), 'yyyy-MM-dd')}
+          </time>
         </p>
         <div className="flex flex-col sm:flex-row gap-6">
           <div className="*:leading-none">
@@ -116,9 +130,13 @@ export default async function Home({
                 )}
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
-                {work.description.map((description) => (
-                  <p className='mb-2' key={description}>{description}</p>
-                ))}
+                <ul>
+                  {work.description.map((description) => (
+                    <li className="mb-2" key={description}>
+                      {description}
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           );

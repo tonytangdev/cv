@@ -53,6 +53,8 @@ export type Data = {
   status: Status | null;
   location: string;
   bio: string;
+  /** Short (~160 chars) summary used for meta descriptions. */
+  description: string;
   summary: string;
   skills: string[];
   education: Education[];

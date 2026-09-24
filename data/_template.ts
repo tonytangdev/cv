@@ -10,6 +10,7 @@ const data: Data = {
   },
   location: '',
   bio: '',
+  description: '',
   summary: '',
   skills: [],
   education: [

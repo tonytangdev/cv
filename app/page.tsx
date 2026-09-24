@@ -6,11 +6,12 @@ import { redirect } from 'next/navigation';
 const data = getData();
 
 export const metadata: Metadata = {
-  title: data.name,
-  description: data.summary,
+  title: `${data.name} – ${data.bio}`,
+  description: data.description,
+  metadataBase: AppConfig.host ? new URL(AppConfig.host) : undefined,
   openGraph: {
     title: data.name,
-    description: data.summary,
+    description: data.description,
     images: [`/locale/${AppConfig.defaultLocale}/og-image.png`],
   },
   twitter: {

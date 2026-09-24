@@ -14,12 +14,19 @@ export async function generateMetadata() {
   const locale = getCurrentLocale();
 
   const meta: Metadata = {
-    title: data.name,
-    description: data.summary,
+    title: `${data.name} – ${data.bio}`,
+    description: data.description,
     metadataBase: AppConfig.host ? new URL(AppConfig.host) : undefined,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: Object.fromEntries(
+        AppConfig.locales.map(({ id }) => [id, `/${id}`])
+      ),
+      types: { 'text/markdown': '/llms.txt' },
+    },
     openGraph: {
       title: data.name,
-      description: data.summary,
+      description: data.description,
       images: [`/locale/${locale}/og-image.png`],
     },
     twitter: {
