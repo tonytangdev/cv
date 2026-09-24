@@ -11,7 +11,7 @@ const data: Data = {
   lastUpdatedAt: new Date(),
   status: {
     color: "active",
-    label: "Ouvert aux opportunités",
+    label: "Disponible en soirée et le week-end",
   },
   location: "Paris, France",
   bio: "Head of Engineering",

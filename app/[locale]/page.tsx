@@ -1,5 +1,6 @@
 import { ProjectCard } from '@/app/components/project-card';
 import Section from '@/app/components/section';
+import Status from '@/app/components/status';
 import ToolBar from '@/app/components/toolbar';
 import { Badge } from '@/app/components/ui/badge';
 import { Button } from '@/app/components/ui/button';
@@ -39,6 +40,12 @@ export default async function Home({
               <Globe size={14} />
               {data.location}
             </p>
+            {data.status && (
+              <Status
+                status={data.status}
+                className="px-0 mr-0 mt-3 text-muted-foreground"
+              />
+            )}
           </div>
         </div>
       </section>

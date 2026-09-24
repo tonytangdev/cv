@@ -11,7 +11,7 @@ const data: Data = {
   lastUpdatedAt: new Date(),
   status: {
     color: "active",
-    label: "Open to opportunities",
+    label: "Available evenings & weekends",
   },
   location: "Paris, France",
   bio: "Head of Engineering",
