@@ -4,7 +4,7 @@ import {
   SiGithub,
   SiLinkedin,
 } from "@icons-pack/react-simple-icons";
-import { Mail } from "lucide-react";
+import { Link, Mail } from "lucide-react";
 
 const data: Data = {
   name: "Tony Tang",
@@ -251,6 +251,11 @@ const data: Data = {
     },
   ],
   links: [
+    {
+      label: "Website",
+      href: "https://tonytang.dev/",
+      icon: Link,
+    },
     {
       label: "Github",
       href: "https://github.com/tonytangdev/",
