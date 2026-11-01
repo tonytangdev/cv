@@ -1,5 +1,5 @@
 import { ProjectCard } from '@/app/components/project-card';
-import { AppConfig } from '@/app.config';
+import { AppConfig, LocaleId, localePath } from '@/app.config';
 import { toPersonJsonLd } from '@/app/lib/structured-data';
 import Section from '@/app/components/section';
 import Status from '@/app/components/status';
@@ -8,33 +8,24 @@ import { Badge } from '@/app/components/ui/badge';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/app/components/ui/card';
 import { getData } from '@/data';
-import { getI18n, getStaticParams } from '@/locales/server';
+import { getDictionary } from '@/locales';
 import { format } from 'date-fns';
 import { Globe } from 'lucide-react';
-import { setStaticParamsLocale } from 'next-international/server';
 
-export default async function Home({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  setStaticParamsLocale(locale);
-
-  const t = await getI18n();
-  const data = getData();
-  const jsonLd = toPersonJsonLd(
-    data,
-    AppConfig.host ? `${AppConfig.host}/${locale}` : undefined
-  );
+export default function CvPage({ locale }: { locale: LocaleId }) {
+  const t = getDictionary(locale);
+  const data = getData(locale);
+  const jsonLd = toPersonJsonLd(data, `${AppConfig.host}${localePath(locale)}`);
 
   return (
-    <main className="container max-w-2xl pt-10 pb-16 sm:py-16 mb-6 print:mb-0 print:py-6 space-y-8">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
+      <main className="container max-w-2xl pt-18 pb-16 sm:pt-24 sm:pb-16 mb-6 print:mb-0 print:py-6 space-y-8">
       <section>
         <p className="text-right italic text-sm mb-4 text-muted-foreground">
           <time dateTime={format(new Date(data.lastUpdatedAt), 'yyyy-MM-dd')}>
@@ -64,13 +55,13 @@ export default async function Home({
         </div>
       </section>
 
-      <Section title={t('about')}>
+      <Section title={t.about}>
         <p className="text-base text-pretty text-muted-foreground leading-relaxed">
           {data.summary}
         </p>
       </Section>
 
-      <Section title={t('skills')} avoidPageBreak>
+      <Section title={t.skills} avoidPageBreak>
         <div className="flex flex-wrap gap-2">
           {data.skills.map((skill) => (
             <Badge variant="outline" key={skill}>
@@ -80,7 +71,7 @@ export default async function Home({
         </div>
       </Section>
 
-      <Section title={t('workExperience')}>
+      <Section title={t.workExperience}>
         {data.work.map((work) => {
           return (
             <Card key={`${work.company}-${work.title}`} className="print:shadow-none">
@@ -144,7 +135,7 @@ export default async function Home({
       </Section>
 
       {data.education.length > 0 && (
-        <Section title={t('education')}>
+        <Section title={t.education}>
           {data.education.map((education) => {
             return (
               <Card key={education.school} className="print:shadow-none">
@@ -172,7 +163,7 @@ export default async function Home({
 
 
 
-      <Section title={t('projects')} avoidPageBreak>
+      <Section title={t.projects} avoidPageBreak>
         <div className="overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {data.projects.map((project) => (
@@ -182,7 +173,7 @@ export default async function Home({
         </div>
       </Section>
 
-      <Section title={t('contacts')} avoidPageBreak>
+      <Section title={t.contacts} avoidPageBreak>
         <div className="flex flex-wrap gap-2">
           {data.contacts.map((contact) => (
             <Button size="sm" key={contact.href} variant="outline" asChild>
@@ -198,7 +189,7 @@ export default async function Home({
         </div>
       </Section>
 
-      <Section title={t('links')} avoidPageBreak>
+      <Section title={t.links} avoidPageBreak>
         <div className="flex flex-wrap gap-2">
           {data.links.map((link) => (
             <Button size="sm" key={link.href} variant="outline" asChild>
@@ -215,12 +206,9 @@ export default async function Home({
       </Section>
 
       <div className="print:hidden">
-        <ToolBar data={data} />
+        <ToolBar data={data} locale={locale} />
       </div>
-    </main>
+      </main>
+    </>
   );
-}
-
-export function generateStaticParams() {
-  return getStaticParams();
 }

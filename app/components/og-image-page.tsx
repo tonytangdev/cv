@@ -1,20 +1,13 @@
 import { getData } from '@/data';
-import { getStaticParams } from '@/locales/server';
-import { setStaticParamsLocale } from 'next-international/server';
-import Image from 'next/image';
+import { LocaleId, localePath } from '@/app.config';
 import { redirect } from 'next/navigation';
 
-export default function Page({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  setStaticParamsLocale(locale);
-
-  const data = getData();
+// Dev-only canvas that the og-image Playwright script screenshots.
+export default function OgImagePage({ locale }: { locale: LocaleId }) {
+  const data = getData(locale);
 
   if (process.env.NODE_ENV !== 'development') {
-    redirect('/' + locale);
+    redirect(localePath(locale));
   }
 
   return (
@@ -35,8 +28,4 @@ export default function Page({
       </div>
     </div>
   );
-}
-
-export function generateStaticParams() {
-  return getStaticParams();
 }

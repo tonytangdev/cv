@@ -1,5 +1,6 @@
-import { IconType } from '@icons-pack/react-simple-icons';
-import { LucideIcon } from 'lucide-react';
+import type { ComponentType } from 'react';
+
+type Icon = ComponentType<{ size?: number; className?: string }>;
 
 export type Project = {
   title: string;
@@ -31,14 +32,14 @@ export type Work = {
 export type Contact = {
   label: string;
   href: string;
-  icon: LucideIcon | IconType;
+  icon: Icon;
   toolbar?: boolean;
 };
 
 export type Link = {
   label: string;
   href: string;
-  icon: LucideIcon | IconType;
+  icon: Icon;
 };
 
 export type Status = {

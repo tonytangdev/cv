@@ -1,5 +1,5 @@
 export const AppConfig = {
-  host: process.env.GITHUB_PAGES_ORIGIN as string, // or Custom Domain
+  host: 'https://cv.tonytang.dev',
   defaultLocale: 'en',
   locales: [
     {
@@ -22,3 +22,9 @@ export const AppConfig = {
 } as const;
 
 export type LocaleId = (typeof AppConfig)['locales'][number]['id'];
+
+/** The default locale lives at the root, the others under /<id>/. */
+export function localePath(locale: LocaleId, path = '') {
+  const prefix = locale === AppConfig.defaultLocale ? '' : `/${locale}`;
+  return `${prefix}/${path}`;
+}

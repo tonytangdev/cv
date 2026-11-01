@@ -1,4 +1,4 @@
-import { AppConfig } from '@/app.config';
+import { AppConfig, localePath } from '@/app.config';
 import { test } from '@playwright/test';
 
 test.use({
@@ -13,7 +13,7 @@ test('ogimage', async ({ page }) => {
       : [AppConfig.defaultLocale];
 
   for (const lang of locales) {
-    await page.goto(`http://localhost:${port}/${lang}/og-image`);
+    await page.goto(`http://localhost:${port}${localePath(lang, 'og-image')}`);
     await page
       .locator('#canvas')
       .screenshot({ path: `./public/locale/${lang}/og-image.png` });

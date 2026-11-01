@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: process.env.REPOSITORY_NAME,
+  // /fr/ like tonytang.dev; GitHub Pages serves out/fr/index.html for it.
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },

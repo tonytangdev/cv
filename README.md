@@ -25,8 +25,8 @@ This is a feature-rich CV template repository, optimized for GitHub Pages, allow
 First, run the development server:
 
 ```bash
-bun install
-bun dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -44,33 +44,17 @@ Please edit the following file. Feel free to customize the UI and functionality 
 Please execute the following while the development server is running.
 
 ```bash
-bun ogimage
+pnpm ogimage
 # or
-PORT=3001 bun ogimage
+PORT=3001 pnpm ogimage
 ```
 
-The OG Image template can be edited in [og-image/page.tsx](app/[locale]/og-image/page.tsx).
+The OG Image template can be edited in [og-image-page.tsx](app/components/og-image-page.tsx).
 
 ## Deploy
 
-GitHub Actions automatically publishes the contents of the main branch. Please enable GitHub Pages in the repository settings beforehand.
+GitHub Actions publishes the main branch to GitHub Pages, served at the custom domain set in [public/CNAME](public/CNAME) and `host` in [app.config.ts](app.config.ts) (currently https://cv.tonytang.dev).
 
-## Custom Domain
+## URLs
 
-If you are using a custom domain with GitHub Pages, please remove the following line from [gh-pages.yml](.github/workflows/gh-pages.yml).
-
-```diff
-name: Build with Next.js
-  run: bun run build
-- env:
--   REPOSITORY_NAME: ${{ github.event.repository.name }}
-```
-
-Next, please edit [app.config.ts](app.config.ts).
-
-```ts
-export const AppConfig = {
-  defaultLocale: 'en',
-  // Please replace host with your custom domain.
-  host: process.env.GITHUB_PAGES_ORIGIN as string,
-```
+English lives at the root (`/`), other locales under `/<id>/` (e.g. `/fr/`). `/en/` redirects to `/` for old links.

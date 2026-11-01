@@ -1,5 +1,6 @@
 import { Data } from '@/types/data';
-import { Github, Mail } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
+import { Mail } from 'lucide-react';
 
 const data: Data = {
   name: '',
@@ -79,7 +80,7 @@ const data: Data = {
     {
       label: '',
       href: '',
-      icon: Github,
+      icon: SiGithub,
     },
   ],
 };
