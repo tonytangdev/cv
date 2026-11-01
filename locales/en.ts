@@ -22,4 +22,6 @@ export default {
   projects: 'Projects',
   contact: 'Contact',
   email: 'Email',
+  copyEmail: 'Copy email address',
+  copied: 'Copied!',
 } as const;

@@ -1,4 +1,5 @@
 import { AppConfig, LocaleId, localePath } from '@/app.config';
+import { CopyButton } from '@/app/components/copy-button';
 import { Glasses } from '@/app/components/glasses';
 import { LinkIcon } from '@/app/components/link-icon';
 import { ThemeToggle } from '@/app/components/theme-toggle';
@@ -106,13 +107,21 @@ export default function CvPage({ locale }: { locale: LocaleId }) {
 
           {/* Screen: buttons. Print/PDF: the same links as plain text. */}
           <div className="mt-6 flex flex-wrap gap-2 print:hidden">
-            <a
-              href={`mailto:${data.email}`}
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-4 py-2 font-medium text-cream no-underline transition hover:-translate-y-px hover:bg-teal-2"
-            >
-              <Mail size={16} aria-hidden="true" />
-              {data.email}
-            </a>
+            <span className="inline-flex rounded-lg bg-teal text-cream transition hover:-translate-y-px">
+              <a
+                href={`mailto:${data.email}`}
+                className="inline-flex items-center gap-2 rounded-l-lg py-2 pl-4 pr-3 font-medium text-cream no-underline transition hover:bg-teal-2"
+              >
+                <Mail size={16} aria-hidden="true" />
+                {data.email}
+              </a>
+              <CopyButton
+                value={data.email}
+                label={t.copyEmail}
+                copiedLabel={t.copied}
+                className="rounded-r-lg border-l border-cream/25 px-3 hover:bg-teal-2"
+              />
+            </span>
             {data.links.map((link) => (
               <a
                 key={link.href}
@@ -309,12 +318,19 @@ export default function CvPage({ locale }: { locale: LocaleId }) {
 
         <Section id="contact" title={t.contact} className="print:hidden">
           <ul className="grid gap-2">
-            <li>
+            <li className="flex items-center gap-2">
               <a href={`mailto:${data.email}`} className="inline-flex items-center gap-2 hover:text-accent">
                 <Mail size={15} aria-hidden="true" />
                 <span className="sr-only">{t.email}: </span>
                 {data.email}
               </a>
+              <CopyButton
+                value={data.email}
+                label={t.copyEmail}
+                copiedLabel={t.copied}
+                size={14}
+                className="size-7 rounded-md text-muted hover:bg-surface-2 hover:text-accent"
+              />
             </li>
             {data.links.map((link) => (
               <li key={link.href}>
