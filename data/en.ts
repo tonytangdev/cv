@@ -2,9 +2,9 @@ import { Data } from "@/types/data";
 import {
   SiCodementor,
   SiGithub,
-  SiLinkedin,
 } from "@icons-pack/react-simple-icons";
 import { Link, Mail } from "lucide-react";
+import { LinkedInIcon } from "@/app/components/icons";
 
 const data: Data = {
   name: "Tony Tang",
@@ -278,7 +278,7 @@ const data: Data = {
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/tony-tang-671248b1/",
-      icon: SiLinkedin,
+      icon: LinkedInIcon,
     },
     {
       label: "Codementor",

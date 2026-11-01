@@ -1,5 +1,5 @@
 import { cn } from '@/app/lib/utils';
-import { Status } from '@/types/data';
+import type { Status } from '@/types/data';
 
 export default function Status({
   status,
