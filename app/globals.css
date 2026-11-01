@@ -1,163 +1,244 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+/* Dark mode follows tonytang.dev: <html data-theme="dark">. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
+/* Design tokens copied from tonytang.dev so the CV reads as the same brand. */
+:root {
+  --teal: oklch(42% 0.085 197);
+  --teal-2: oklch(34% 0.08 202);
+  --cream: oklch(96% 0.025 95);
+  --pop: oklch(86% 0.16 92);
+  --pop-ink: oklch(34% 0.08 202);
+  --ink-fixed: oklch(17% 0.022 200);
+
+  --bg: oklch(98.6% 0.006 190);
+  --surface: oklch(100% 0 0);
+  --surface-2: oklch(96.5% 0.008 195);
+  --ink: oklch(22% 0.028 200);
+  --ink-strong: oklch(16% 0.03 200);
+  --muted: oklch(46% 0.024 200);
+  --accent: oklch(47% 0.1 196);
+  --accent-strong: oklch(40% 0.1 197);
+  --line: oklch(88% 0.012 195);
+  --line-strong: oklch(78% 0.014 197);
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur: 0.16s;
+  color-scheme: light;
+}
+
+/* The printed/PDF CV is always light, whatever the screen theme. */
+@media not print {
+  [data-theme='dark'] {
+    --bg: oklch(17% 0.018 200);
+    --surface: oklch(21.4% 0.02 200);
+    --surface-2: oklch(25% 0.022 200);
+    --ink: oklch(93% 0.012 190);
+    --ink-strong: oklch(97% 0.01 190);
+    --muted: oklch(69% 0.018 195);
+    --accent: oklch(74% 0.1 194);
+    --accent-strong: oklch(82% 0.09 192);
+    --line: oklch(31% 0.018 200);
+    --line-strong: oklch(40% 0.02 200);
+    color-scheme: dark;
   }
 }
 
-@theme {
-  --text-base: 0.9375rem;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-strong: var(--ink-strong);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-teal: var(--teal);
+  --color-teal-2: var(--teal-2);
+  --color-cream: var(--cream);
+  --color-pop: var(--pop);
+  --color-pop-ink: var(--pop-ink);
 
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
-}
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-body: var(--font-public-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-
-    --radius: 0.5rem;
+  html {
+    -webkit-text-size-adjust: 100%;
   }
 
-  @media not print {
-    .dark {
-      --background: 240 5% 9%;
-      --foreground: 0 0% 98%;
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    transition:
+      background var(--dur) var(--ease),
+      color var(--dur) var(--ease);
+  }
 
-      --card: 240 10% 3.9%;
-      --card-foreground: 0 0% 98%;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--ink-strong);
+  }
 
-      --popover: 240 10% 3.9%;
-      --popover-foreground: 0 0% 98%;
+  a {
+    color: inherit;
+  }
 
-      --primary: 0 0% 98%;
-      --primary-foreground: 240 5.9% 10%;
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 
-      --secondary: 240 3.7% 15.9%;
-      --secondary-foreground: 0 0% 98%;
-
-      --muted: 240 3.7% 15.9%;
-      --muted-foreground: 240 5% 64.9%;
-
-      --accent: 240 3.7% 15.9%;
-      --accent-foreground: 0 0% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
-
-      --border: 240 3.7% 15.9%;
-      --input: 240 3.7% 15.9%;
-      --ring: 240 4.9% 83.9%;
-    }
+  ::selection {
+    background: var(--pop);
+    color: var(--pop-ink);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* Glasses mark, same drawing and intro as tonytang.dev. */
+.glasses svg {
+  aspect-ratio: 120 / 56;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.glasses .pupils {
+  transition: transform 0.12s var(--ease);
+}
+.glasses .lens {
+  fill: color-mix(in oklch, var(--ink-fixed) 60%, transparent);
+  transition: fill var(--dur) var(--ease);
+}
+[data-theme='dark'] .glasses .lens {
+  fill: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-intro-seen]) .glasses .frame path {
+    stroke-dasharray: 1 1.1;
+    animation: 2.2s var(--ease) both;
+  }
+  html:not([data-intro-seen]) .glasses .frame .rim {
+    animation-name: glasses-draw-rim;
+  }
+  html:not([data-intro-seen]) .glasses .frame .bridge {
+    animation-name: glasses-draw-bridge;
+  }
+  html:not([data-intro-seen]) .glasses .frame .temple {
+    animation-name: glasses-draw;
+  }
+  html:not([data-intro-seen]) .glasses .lenses {
+    animation: 2.2s linear both glasses-tint;
+  }
+  html:not([data-intro-seen]) .glasses .pupil {
+    transform-box: fill-box;
+    transform-origin: 50%;
+    animation: 2.2s linear both glasses-pupil;
+  }
+  html:not([data-intro-seen]) .glasses .gaze {
+    animation: glasses-gaze 2.2s var(--ease) both;
+  }
+}
+
+@keyframes glasses-draw-rim {
+  0% {
+    stroke-dashoffset: 1.01px;
+  }
+  34%,
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes glasses-draw-bridge {
+  0%,
+  18% {
+    stroke-dashoffset: 1.01px;
+  }
+  28%,
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes glasses-draw {
+  0%,
+  25% {
+    stroke-dashoffset: 1.01px;
+  }
+  34%,
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes glasses-tint {
+  0%,
+  30% {
+    opacity: 0;
+  }
+  45%,
+  to {
+    opacity: 1;
+  }
+}
+@keyframes glasses-pupil {
+  0%,
+  34% {
+    animation-timing-function: cubic-bezier(0.3, 1.6, 0.5, 1);
+    transform: scale(0);
+  }
+  46% {
+    transform: scale(1);
+  }
+  79% {
+    transform: scaleY(1);
+  }
+  82% {
+    transform: scaleY(0.1);
+  }
+  86%,
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes glasses-gaze {
+  0%,
+  52% {
+    transform: translate(0);
+  }
+  62%,
+  76% {
+    transform: translate(var(--gx, -6px), var(--gy, 2px));
+  }
+  92%,
+  to {
+    transform: translate(0);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm 16mm;
+  }
+  /* rem-based sizes shrink with the root, so the PDF stays compact. */
+  html {
+    font-size: 11px;
   }
   body {
-    @apply bg-background text-foreground;
+    background: #fff;
+    font-size: 9.5pt;
+    line-height: 1.4;
   }
 }
