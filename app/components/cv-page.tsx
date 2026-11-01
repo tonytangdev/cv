@@ -1,5 +1,6 @@
 import { AppConfig, LocaleId, localePath } from '@/app.config';
 import { CopyButton } from '@/app/components/copy-button';
+import { CvChat } from '@/app/components/cv-chat';
 import { Glasses } from '@/app/components/glasses';
 import { LinkIcon } from '@/app/components/link-icon';
 import { ThemeToggle } from '@/app/components/theme-toggle';
@@ -360,6 +361,8 @@ export default function CvPage({ locale }: { locale: LocaleId }) {
           </span>
         </div>
       </footer>
+
+      <CvChat locale={locale} t={t.chat} />
     </>
   );
 }

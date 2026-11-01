@@ -227,6 +227,69 @@
   }
 }
 
+/* The glasses in the chat: the assistant's avatar, and while an answer is on
+   its way, a bigger pair that reads: the pupils sweep along a line, jump back
+   to the start of the next one, and blink now and then. */
+.chat-glasses svg {
+  aspect-ratio: 120 / 56;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chat-glasses .lens {
+  fill: transparent;
+}
+.chat-glasses .gaze {
+  transition: transform 0.3s var(--ease);
+}
+.chat-glasses .pupil {
+  transform-box: fill-box;
+  transform-origin: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chat-glasses[data-reading] .gaze {
+    animation: chat-read 2.4s linear infinite;
+  }
+  .chat-glasses .pupil {
+    animation: chat-blink 5s infinite 1.2s;
+  }
+}
+
+@keyframes chat-read {
+  0% {
+    transform: translate(-8px, -5px);
+  }
+  27% {
+    transform: translate(8px, -5px);
+  }
+  33% {
+    transform: translate(-8px, 0);
+  }
+  60% {
+    transform: translate(8px, 0);
+  }
+  66% {
+    transform: translate(-8px, 5px);
+  }
+  93% {
+    transform: translate(8px, 5px);
+  }
+  to {
+    transform: translate(-8px, -5px);
+  }
+}
+@keyframes chat-blink {
+  0%,
+  92%,
+  to {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
 @media print {
   @page {
     size: A4;
