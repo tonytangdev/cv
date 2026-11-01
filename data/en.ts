@@ -1,92 +1,148 @@
 import { Data } from "@/types/data";
-import {
-  SiCodementor,
-  SiGithub,
-} from "@icons-pack/react-simple-icons";
-import { Link, Mail } from "lucide-react";
-import { LinkedInIcon } from "@/app/components/icons";
 
 const data: Data = {
   name: "Tony Tang",
-  lastUpdatedAt: new Date("2026-09-24"),
+  lastUpdatedAt: new Date("2026-11-01"),
   status: {
     color: "active",
     label: "Open to freelance (evenings & weekends)",
   },
   location: "Paris, France",
-  bio: "Head of Engineering",
-  description: "Head of Engineering at Fonts Ninja in Paris. 10 years building web products with TypeScript, NestJS, React and AWS. Leads a team of 5 developers.",
-  summary: `Hi, I'm Tony, Head of Engineering at Fonts Ninja in Paris, with around 10 years of experience building web products. I lead a team of 5 developers: I choose our technologies, set our standards, make the final technical calls and work directly on the product direction. My background is full-stack: I spent 5 years at Planity, France's leading beauty booking platform, first as a developer and then leading a team of 4 to 6 developers. Today I focus on backend systems that handle large volumes of data, like the Font Radar robots that scan 30M websites a day, and on using AI to automate how the team works. I have also mentored around 20 developers on Codementor.`,
-  skills: [
+  headline: "Head of Engineering",
+  tagline:
+    "I lead teams that build and scale web products, and I'm taking my team AI-first.",
+  description:
+    "Head of Engineering at Fonts Ninja in Paris. 10 years building web products, leading a team of 5 developers. TypeScript, NestJS, React, AWS.",
+  summary: `I'm Tony, Head of Engineering at Fonts Ninja in Paris, with around 10 years of experience building web products. I lead a team of 5 developers: I choose our technologies, set our standards and make the final technical calls, and I have a direct say in the product direction. Before that, I spent 5 years at Planity, France's leading beauty booking platform, first as a developer and then leading a team of 4 to 6 developers. Today I focus on systems that handle large volumes of data, and on using AI to change how my team works. I have also mentored around 20 developers on Codementor.`,
+  highlights: [
+    "Lead a team of 5 developers as Head of Engineering at Fonts Ninja.",
+    "5 years at Planity, France's leading beauty booking platform (40,000+ salons, around 10M appointments a month), the last 3 leading a team of 4 to 6 developers.",
+    "Hired 2 senior developers, and mentored around 20 developers. Most of the developers I led at Planity were promoted.",
+    "Led a zero-downtime migration that made Planity's salon dashboard much faster and fixed long-standing wrong totals.",
+    "Taking my team AI-first: production errors are now triaged by AI, and developers and our Product Owner use AI to explore the codebase.",
+  ],
+  services: [
+    {
+      title: "Build or rescue a web product",
+      description:
+        "Web apps, APIs and back-office tools, from the first version to production, built so your team can maintain them.",
+    },
+    {
+      title: "Backend and data pipelines",
+      description:
+        "Systems that collect and process large volumes of data reliably: web scrapers, queues and background jobs.",
+    },
+    {
+      title: "Make your team AI-first",
+      description:
+        "Set up AI tools and workflows so your developers ship faster without lowering quality.",
+    },
+    {
+      title: "Part-time tech leadership",
+      description:
+        "Technical decisions, code review, hiring and mentoring for teams without a senior lead.",
+    },
+  ],
+  leadershipSkills: [
     "Engineering Management",
     "Team Leadership",
     "Hiring",
     "Mentoring",
     "Code Review",
-    "System Design",
-    "TypeScript",
-    "Node.js",
-    "NestJS",
-    "Next.js",
-    "React",
-    "React Native",
-    "Hexagonal Architecture",
-    "SQL",
-    "MySQL",
-    "NoSQL",
-    "BullMQ",
-    "Redpanda (Kafka)",
-    "Web scraping",
-    "AWS ECS",
-    "AWS SQS",
-    "AWS Lambda",
-    "AWS S3",
-    "AWS Step Functions",
-    "AWS DynamoDB",
-    "AWS API Gateway",
-    "AWS OpenSearch",
-    "Elasticsearch",
-    "Cloudflare",
-    "Firebase",
-    "Firestore",
-    "Redux",
-    "XState",
-    "Algolia",
-    "Stripe",
-    "Shopify",
-    "Claude Code",
-    "AI automation (LLMs)",
+    "Delivery Planning",
+    "Technical Decision-Making",
+    "AI Adoption",
   ],
-  education: [
+  skillGroups: [
     {
-      school: "Supinfo",
-      degree: `Expert in Computer Science and Information Systems (Master's level)`,
-      start: "2014",
-      end: "2019",
+      label: "Languages & frameworks",
+      skills: [
+        "TypeScript",
+        "Node.js",
+        "NestJS",
+        "Next.js",
+        "React",
+        "React Native",
+        "Redux",
+        "XState",
+      ],
     },
     {
-      school: "Amazon Web Services",
-      degree: `AWS Certified Solutions Architect – Associate (SAA-C01, expired)`,
-      start: "Oct 2018",
-      end: "Nov 2020",
+      label: "Architecture",
+      skills: ["System Design", "Hexagonal Architecture", "Web Scraping"],
+    },
+    {
+      label: "Data & messaging",
+      skills: [
+        "SQL",
+        "MySQL",
+        "NoSQL",
+        "Elasticsearch",
+        "BullMQ",
+        "Redpanda (Kafka)",
+        "Firebase",
+        "Firestore",
+        "Algolia",
+      ],
+    },
+    {
+      label: "Cloud",
+      skills: [
+        "AWS ECS",
+        "AWS SQS",
+        "AWS Lambda",
+        "AWS S3",
+        "AWS Step Functions",
+        "AWS DynamoDB",
+        "AWS API Gateway",
+        "AWS OpenSearch",
+        "Cloudflare",
+      ],
+    },
+    {
+      label: "AI",
+      skills: ["Claude Code", "AI automation (LLMs)"],
+    },
+    {
+      label: "Payments & commerce",
+      skills: ["Stripe", "Shopify"],
     },
   ],
   work: [
     {
       company: "Fonts Ninja",
+      companyDescription:
+        "Makes a browser extension that identifies the fonts on any website (900k users on Chrome), and Font Radar, a service that finds websites using fonts without a license so that type foundries get paid.",
       link: "https://fonts.ninja",
       badges: [],
       title: "Head of Engineering",
       start: "Feb 2026",
       end: "Present",
-      description: [
-        "Leading a team of 5 developers at Fonts Ninja. The role is close to my Lead Developer position at Planity, but in a smaller company with broader responsibilities: I choose the technologies, have a direct say in the product direction and make the final call when the team disagrees on a solution.",
-        "Fonts Ninja builds two products: a browser extension that identifies the fonts used on any website quickly and precisely (900k users on Chrome, also on Firefox and Safari), and Font Radar, a license enforcement service for type foundries whose robots scan 30M new websites a day (1B+ websites in the database) to find those using fonts without the appropriate license, so that foundries get paid for their work.",
+      highlights: [
+        "Lead a team of 5 developers: I choose the technologies, set the standards and make the final call when the team disagrees on a solution.",
+        "Have a direct say in the product direction, in a smaller company with broader responsibilities than my previous role.",
         "Hired 2 senior developers, one of whom now works with us remotely from Korea.",
-        "Set the team's coding standards and enforce hexagonal architecture through code review. I step into every project to validate solutions when developers have doubts.",
-        "Leading the ongoing migration from legacy database queues to BullMQ and Redpanda: tackling the easiest or most valuable parts first, mapping every data flow and planning each step to keep downtime to a minimum.",
-        "Automated many tasks with AI, such as triaging AWS and Sentry errors, and set up AI codebase analysis that both the developers and our Product Owner use.",
-        "Stack: NestJS, TypeScript, Next.js, MySQL, BullMQ, Redpanda, AWS SQS, AWS ECS, AWS S3, AWS Lambda, Cloudflare, Claude Code. Hexagonal architecture.",
+        "Taking the team AI-first: AI now triages our production errors, and both the developers and our Product Owner use AI to explore the codebase.",
+        "Leading the step-by-step modernisation of how we process data, planned to keep downtime to a minimum.",
+      ],
+      details: [
+        "Set the team's coding standards and enforce hexagonal architecture through code review; I step into every project to validate solutions when developers have doubts.",
+        "Leading the migration from legacy database queues to BullMQ and Redpanda: easiest or most valuable parts first, every data flow mapped and each step planned.",
+        "Automated AWS and Sentry error triage with AI, and set up AI codebase analysis.",
+      ],
+      techStack: [
+        "NestJS",
+        "TypeScript",
+        "Next.js",
+        "MySQL",
+        "BullMQ",
+        "Redpanda",
+        "AWS SQS",
+        "AWS ECS",
+        "AWS S3",
+        "AWS Lambda",
+        "Cloudflare",
+        "Claude Code",
       ],
     },
     {
@@ -96,27 +152,53 @@ const data: Data = {
       title: "Backend Developer",
       start: "Apr 2025",
       end: "Feb 2026",
-      description: [
-        "Joined Fonts Ninja as a backend developer, working on the platform behind both products.",
-        "Worked on the Font Radar robots that scrape and process websites to find the ones most likely to be using fonts without the appropriate license.",
-        "Started migrating legacy database queues to BullMQ and Redpanda, so that we could run many workers in parallel on an ever-growing database and track their progress easily.",
-        "Built and maintained many automations and web scrapers.",
-        "Stack: NestJS, TypeScript, Next.js, MySQL, BullMQ, Redpanda, AWS SQS, AWS ECS, AWS S3, AWS Lambda, Cloudflare, Claude Code. Hexagonal architecture.",
+      highlights: [
+        "Joined as a backend developer on the systems behind both products.",
+        "Worked on the Font Radar robots, which scan 30M new websites a day to find those most likely to be using fonts without a license.",
+        "Built and maintained many automations and data-collection tools.",
+      ],
+      details: [
+        "Started migrating legacy database queues to BullMQ and Redpanda, so that many workers can run in parallel on an ever-growing database and their progress is easy to track.",
+        "Built and maintained web scrapers.",
+      ],
+      techStack: [
+        "NestJS",
+        "TypeScript",
+        "MySQL",
+        "BullMQ",
+        "Redpanda",
+        "AWS SQS",
+        "AWS ECS",
+        "AWS S3",
+        "AWS Lambda",
+        "Web Scraping",
       ],
     },
     {
       company: "Planity",
+      companyDescription:
+        "France's leading beauty booking platform: 40,000+ salons and around 10M appointments a month, also in Belgium and Germany.",
       link: "https://planity.com",
       badges: [],
       title: "Lead Developer",
       start: "Feb 2022",
       end: "Feb 2025",
-      description: [
-        "Led a team that grew from 4 to 6 developers over 3 years, one of the teams created as Planity scaled its engineering (40,000+ salons, around 10M appointments a month).",
-        "Led the zero-downtime migration of the salon statistics dashboard from Firebase to Elasticsearch. Replacing precomputed caches with query-time aggregations made the dashboard much faster, removed the precompute cost and fixed long-standing wrong totals.",
+      highlights: [
+        "Led a team that grew from 4 to 6 developers over 3 years, one of the teams created as Planity scaled its engineering.",
+        "Mentored the developers I worked with: most of them were promoted, and some became Lead Developers themselves.",
+        "Estimated project timelines, planned delivery and reviewed the team's work for readability, correctness and security.",
+        "Led the zero-downtime move of the salon statistics dashboard to a new system: it became much faster, cheaper to run, and long-standing wrong totals were fixed.",
+      ],
+      details: [
+        "Migrated the dashboard from Firebase to Elasticsearch, replacing precomputed caches with query-time aggregations.",
         "Validated the approach with a proof of concept, then designed the migration: dual-writes, an idempotent and resumable backfill of millions of records with AWS Step Functions and Lambda, per-salon validation of every total, and a feature-flag cutover rehearsed in preprod.",
-        "Mentored the developers I worked with: some grew into Lead Developers and most of them were promoted.",
-        "Spent most of my time reviewing code rather than writing it: reviewed the team's pull requests for readability, correctness and security, estimated project timelines and planned delivery.",
+        "Spent most of my time reviewing pull requests rather than writing code.",
+      ],
+      techStack: [
+        "Elasticsearch",
+        "Firebase",
+        "AWS Step Functions",
+        "AWS Lambda",
       ],
     },
     {
@@ -126,25 +208,46 @@ const data: Data = {
       title: "Fullstack Web Developer",
       start: "Feb 2020",
       end: "Feb 2022",
-      description: [
-        "Built features for Planity's public booking app (React, React Native) and for Planity Pro, its management software for salons.",
+      highlights: [
+        "Built features for the public booking app, on web and mobile, and for Planity Pro, the software salons use to run their business.",
+        "Built a point-of-sale system for salons in Germany, and integrated online payments and Shopify.",
+        "Designed large features, and planned releases so that customers still on older versions of the app kept working.",
+      ],
+      details: [
         "Worked on the AWS backend (Lambda, S3, API Gateway, OpenSearch) and on real-time updates with Firebase and Firestore.",
-        "Integrated Stripe and Shopify, and built a point-of-sale system for users in Germany.",
-        "Designed large-scale features, planned production releases that stayed compatible with older app versions still in use, and worked on database sharding.",
+        "Integrated Stripe and Shopify, and worked on database sharding.",
+      ],
+      techStack: [
+        "React",
+        "React Native",
+        "Redux",
+        "XState",
+        "Firebase",
+        "Firestore",
+        "AWS Lambda",
+        "AWS S3",
+        "AWS API Gateway",
+        "AWS OpenSearch",
+        "Algolia",
+        "Stripe",
+        "Shopify",
       ],
     },
     {
       company: "LCL",
-      link: "https://LCL.fr",
+      companyDescription: "French retail bank.",
+      link: "https://www.lcl.fr",
       badges: ["work-study"],
       title: "Software Engineer",
       start: "Nov 2017",
       end: "Oct 2019",
-      description: [
-        "Added features to an internal banking application built on an older version of Java.",
+      highlights: [
+        "Added features to an internal banking application that many employees depended on every day.",
         "Worked with other teams to integrate new features into the existing system.",
-        "Wrote unit tests to keep a business-critical application reliable for the many employees who depended on it.",
+        "Wrote automated tests to keep this business-critical application reliable.",
       ],
+      details: ["The application was built on an older version of Java."],
+      techStack: ["Java"],
     },
     {
       company: "FWA",
@@ -153,31 +256,38 @@ const data: Data = {
       title: "Web Developer",
       start: "Aug 2016",
       end: "Oct 2017",
-      description: [
-        "Maintained a complex web application built with C# and ASP.NET on the company's in-house template system.",
-        "Wrote and optimized SQL queries and took part in MySQL database migrations.",
+      highlights: [
+        "Maintained a complex business web application.",
+        "Made database queries faster and took part in database migrations.",
       ],
+      details: [
+        "The application was built with C# and ASP.NET on the company's in-house template system.",
+      ],
+      techStack: ["C#", "ASP.NET", "SQL", "MySQL"],
     },
   ],
-  contacts: [
+  education: [
     {
-      label: "tony.tang.developer@gmail.com",
-      href: "mailto:tony.tang.developer@gmail.com",
-      icon: Mail,
-      toolbar: true,
+      school: "Supinfo",
+      kind: "degree",
+      degree: "Expert in Computer Science and Information Systems (Master's level)",
+      start: "2014",
+      end: "2019",
     },
     {
-      label: "Need a mentor ?",
-      href: "https://www.codementor.io/@tonytangdev",
-      icon: SiCodementor,
-      toolbar: true,
+      school: "Amazon Web Services",
+      kind: "certification",
+      degree: "AWS Certified Solutions Architect – Associate (SAA-C01, expired)",
+      start: "Oct 2018",
+      end: "Nov 2020",
     },
   ],
   projects: [
     {
       title: "Fonts Ninja Extension",
       techStack: ["TypeScript", "Browser extension"],
-      description: `Identifies any font on any website in one click, using Font DNA, an in-house algorithm that analyses the actual font file rather than the CSS. 900k users on Chrome (rated 4.4/5), also available on Firefox and Safari.`,
+      description:
+        "Identifies any font on any website in one click, using Font DNA, an in-house algorithm that analyses the actual font file rather than the CSS. 900k users on Chrome (rated 4.4/5), also available on Firefox and Safari.",
       link: {
         label: "Chrome Web Store",
         href: "https://chromewebstore.google.com/detail/fonts-ninja/eljapbgkmlngdpckoiiibecpemleclhh",
@@ -194,9 +304,10 @@ const data: Data = {
         "AWS SQS",
         "AWS ECS",
         "AWS Lambda",
-        "Web scraping",
+        "Web Scraping",
       ],
-      description: `License enforcement for type foundries. A set of robots and jobs scans over 30M new websites a day (from CTDomains), builds a database of 1B+ websites and 10M+ apps, and finds those using fonts without the appropriate license, so that foundries get paid for their work.`,
+      description:
+        "License enforcement for type foundries. A set of robots and jobs scans over 30M new websites a day (from CTDomains), builds a database of 1B+ websites and 10M+ apps, and finds those using fonts without the appropriate license, so that foundries get paid for their work.",
       link: {
         label: "fontradar.com",
         href: "https://www.fontradar.com",
@@ -217,7 +328,8 @@ const data: Data = {
         "Algolia",
         "Stripe",
       ],
-      description: `France's leading beauty booking platform, with 15M users a month, also available in Belgium and Germany. I worked on both the web and mobile apps.`,
+      description:
+        "France's leading beauty booking platform, with 15M users a month, also available in Belgium and Germany. I worked on both the web and mobile apps.",
       link: {
         label: "planity.com",
         href: "https://planity.com",
@@ -238,14 +350,15 @@ const data: Data = {
         "Algolia",
         "Stripe",
       ],
-      description: `Management software for salon professionals on web, tablet and phone: real-time calendar and appointment management, plus a point-of-sale system used in France, Belgium and Germany.`,
+      description:
+        "Management software for salon professionals on web, tablet and phone: real-time calendar and appointment management, plus a point-of-sale system used in France, Belgium and Germany.",
       link: {
         label: "pro.planity.com",
         href: "https://pro.planity.com",
       },
     },
     {
-      title: "Mentoring",
+      title: "Mentoring on Codementor",
       techStack: [
         "React",
         "Next.js",
@@ -259,31 +372,29 @@ const data: Data = {
       description:
         "Mentored around 20 developers on Codementor, helping them with their React, Next.js, Node.js, TypeScript and MongoDB projects.",
       link: {
-        label: "Codementor",
+        label: "codementor.io",
         href: "https://www.codementor.io/@tonytangdev",
       },
     },
   ],
+  email: "tony@tonytang.dev",
   links: [
-    {
-      label: "Website",
-      href: "https://tonytang.dev/",
-      icon: Link,
-    },
-    {
-      label: "Github",
-      href: "https://github.com/tonytangdev/",
-      icon: SiGithub,
-    },
+    { label: "tonytang.dev", href: "https://tonytang.dev/", kind: "website" },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/tony-tang-671248b1/",
-      icon: LinkedInIcon,
+      kind: "linkedin",
+    },
+    { label: "GitHub", href: "https://github.com/tonytangdev", kind: "github" },
+    {
+      label: "YouTube",
+      href: "https://www.youtube.com/channel/UCaJEuCzLyx6nEDOg0_kvldw",
+      kind: "youtube",
     },
     {
-      label: "Codementor",
-      href: "https://www.codementor.io/@tonytangdev",
-      icon: SiCodementor,
+      label: "Learn Effect (course)",
+      href: "https://learn-effect-ts.tonytang.dev",
+      kind: "course",
     },
   ],
 };

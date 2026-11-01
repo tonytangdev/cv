@@ -48,6 +48,12 @@ jobs:
         run: pnpm lint
       - name: Build with Next.js
         run: pnpm build
+      # PDFs and OG images are rendered from the built pages, so they never
+      # drift from the site.
+      - name: Install Chromium for Playwright
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Render PDFs and OG images
+        run: pnpm assets
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

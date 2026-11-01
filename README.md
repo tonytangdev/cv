@@ -39,17 +39,23 @@ Please edit the following file. Feel free to customize the UI and functionality 
 - [UI Locales](/locales)
 - [Redume Data](/data)
 
-## Generate OG Image
+## PDFs and OG images
 
-Please execute the following while the development server is running.
+Generated from the static export, never committed:
 
 ```bash
-pnpm ogimage
-# or
-PORT=3001 pnpm ogimage
+pnpm build
+pnpm exec playwright install chromium   # once
+pnpm assets   # out/tony-tang-cv-{en,fr}.pdf and out/locale/{en,fr}/og-image.png
 ```
 
-The OG Image template can be edited in [og-image-page.tsx](app/components/og-image-page.tsx).
+The OG image template is [og-image-page.tsx](app/components/og-image-page.tsx); its pages are removed from `out/` after capture.
+
+## For AI
+
+- `/llms.txt` (llmstxt.org index), `/llms-full.txt`, `/en.md`, `/fr.md`: Markdown versions of the CV, generated from the same data as the page.
+- JSON-LD `ProfilePage` whose `mainEntity` is the Person `https://tonytang.dev/#person` from tonytang.dev.
+- `/robots.txt` allows all crawlers, including AI search and training, with the same Content Signals as tonytang.dev.
 
 ## Deploy
 
