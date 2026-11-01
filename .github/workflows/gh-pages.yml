@@ -48,10 +48,6 @@ jobs:
         run: pnpm lint
       - name: Build with Next.js
         run: pnpm build
-        env:
-          # Public Turnstile key for the chat (ask.tonytang.dev); the chat is
-          # hidden when it's missing.
-          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
       # PDFs and OG images are rendered from the built pages, so they never
       # drift from the site.
       - name: Install Chromium for Playwright

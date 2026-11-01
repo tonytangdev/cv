@@ -13,17 +13,6 @@ export const AppConfig = {
   ],
   defaultTheme: 'system', // 'light' | 'dark' | 'system'
 
-  /** The chat assistant, served by the tonytangdev/ask Cloudflare Worker. */
-  ask: {
-    site: 'cv',
-    url: process.env.NEXT_PUBLIC_ASK_URL ?? 'https://ask.tonytang.dev',
-    // Public key. Without it (e.g. a build missing the env var) the chat is
-    // hidden; in development, Cloudflare's always-passing test key is used.
-    turnstileSiteKey:
-      process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ??
-      (process.env.NODE_ENV === 'development' ? '1x00000000000000000000AA' : ''),
-  },
-
   // Please set the features you want to hide to false.
   toolbar: {
     print: true,

@@ -1,6 +1,5 @@
 import { AppConfig, LocaleId, localePath } from '@/app.config';
 import { CopyButton } from '@/app/components/copy-button';
-import { CvChat } from '@/app/components/cv-chat';
 import { Glasses } from '@/app/components/glasses';
 import { LinkIcon } from '@/app/components/link-icon';
 import { ThemeToggle } from '@/app/components/theme-toggle';
@@ -10,6 +9,7 @@ import { cn } from '@/app/lib/utils';
 import { getData } from '@/data';
 import { getDictionary } from '@/locales';
 import { ArrowUpRight, Check, Download, Mail, MapPin } from 'lucide-react';
+import Script from 'next/script';
 
 const container = 'mx-auto w-full max-w-3xl px-5 sm:px-8';
 
@@ -362,7 +362,9 @@ export default function CvPage({ locale }: { locale: LocaleId }) {
         </div>
       </footer>
 
-      <CvChat locale={locale} t={t.chat} />
+      {/* "Ask me anything" chat, from the tonytangdev/ask worker (shared with tonytang.dev). */}
+      <ask-chat site="cv" locale={locale} />
+      <Script src="https://ask.tonytang.dev/widget.js" strategy="lazyOnload" />
     </>
   );
 }

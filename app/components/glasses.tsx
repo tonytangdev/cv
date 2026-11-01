@@ -57,32 +57,25 @@ export function Glasses({ width = 26 }: { width?: number }) {
 
   return (
     <span ref={root} className="glasses inline-block leading-none" style={{ width }} aria-hidden="true">
-      <GlassesSvg />
-    </span>
-  );
-}
-
-/** The glasses drawing, shared by the header mark and the chat avatar. */
-export function GlassesSvg() {
-  return (
-    <svg viewBox="0 0 120 56" fill="none">
-      <g className="frame" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-        <path className="rim" pathLength={1} d="M34 12a18 18 0 1 0 0 36a18 18 0 1 0 0-36" />
-        <path className="rim" pathLength={1} d="M86 12a18 18 0 1 1 0 36a18 18 0 1 1 0-36" />
-        <path className="bridge" pathLength={1} d="M51 25 C 56 31, 64 31, 69 25" />
-        <path className="temple" pathLength={1} d="M17 26 L 6 21" />
-        <path className="temple" pathLength={1} d="M103 26 L 114 21" />
-      </g>
-      <g className="lenses">
-        <circle className="lens" cx="34" cy="30" r="16" />
-        <circle className="lens" cx="86" cy="30" r="16" />
-      </g>
-      <g className="pupils">
-        <g className="gaze">
-          <circle className="pupil" cx="34" cy="30" r="5" fill="var(--pop)" />
-          <circle className="pupil" cx="86" cy="30" r="5" fill="var(--pop)" />
+      <svg viewBox="0 0 120 56" fill="none">
+        <g className="frame" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
+          <path className="rim" pathLength={1} d="M34 12a18 18 0 1 0 0 36a18 18 0 1 0 0-36" />
+          <path className="rim" pathLength={1} d="M86 12a18 18 0 1 1 0 36a18 18 0 1 1 0-36" />
+          <path className="bridge" pathLength={1} d="M51 25 C 56 31, 64 31, 69 25" />
+          <path className="temple" pathLength={1} d="M17 26 L 6 21" />
+          <path className="temple" pathLength={1} d="M103 26 L 114 21" />
         </g>
-      </g>
-    </svg>
+        <g className="lenses">
+          <circle className="lens" cx="34" cy="30" r="16" />
+          <circle className="lens" cx="86" cy="30" r="16" />
+        </g>
+        <g className="pupils">
+          <g className="gaze">
+            <circle className="pupil" cx="34" cy="30" r="5" fill="var(--pop)" />
+            <circle className="pupil" cx="86" cy="30" r="5" fill="var(--pop)" />
+          </g>
+        </g>
+      </svg>
+    </span>
   );
 }
