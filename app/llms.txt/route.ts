@@ -29,7 +29,7 @@ export function GET() {
       '',
       '- [tonytang.dev](https://tonytang.dev/): personal site with articles, videos and the Learn Effect course',
       ...d.links
-        .filter((l) => l.kind === 'linkedin' || l.kind === 'github')
+        .filter((l) => l.kind === 'linkedin' || l.kind === 'github' || l.kind === 'x')
         .map((l) => `- [${l.label}](${l.href})`),
       '',
     ].join('\n')

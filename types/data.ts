@@ -12,7 +12,7 @@ export type Link = {
   label: string;
   href: string;
   /** Kind of link, picks the icon and the schema.org mapping. */
-  kind: 'website' | 'linkedin' | 'github' | 'youtube' | 'course' | 'codementor';
+  kind: 'website' | 'linkedin' | 'github' | 'x' | 'youtube' | 'course' | 'codementor';
 };
 
 export type Status = {

@@ -387,6 +387,7 @@ const data: Data = {
       kind: "linkedin",
     },
     { label: "GitHub", href: "https://github.com/tonytangdev", kind: "github" },
+    { label: "X", href: "https://x.com/TonyTangdev", kind: "x" },
     {
       label: "YouTube",
       href: "https://www.youtube.com/channel/UCaJEuCzLyx6nEDOg0_kvldw",
