@@ -25,7 +25,7 @@ export function toProfilePageJsonLd(data: Data, locale: LocaleId) {
     url,
     name: `${data.name} – ${data.headline}`,
     inLanguage: locale,
-    dateModified: isoDate(data.lastUpdatedAt),
+    dateModified: data.lastUpdatedAt.toISOString(),
     mainEntity: {
       '@type': 'Person',
       '@id': PERSON_ID,
