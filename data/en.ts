@@ -284,6 +284,16 @@ const data: Data = {
   ],
   projects: [
     {
+      title: "Learn Effect",
+      techStack: ["Effect", "TypeScript"],
+      description:
+        "A narrated video course that teaches Effect TypeScript by fixing the bugs developers already ship: typed errors, retries, timeouts, dependency injection and resource leaks. 67 animated-code lessons, 18 of them free, teaching Effect v4 with a v3 edition included.",
+      link: {
+        label: "learn-effect-ts.tonytang.dev",
+        href: "https://learn-effect-ts.tonytang.dev",
+      },
+    },
+    {
       title: "Fonts Ninja Extension",
       techStack: ["TypeScript", "Browser extension"],
       description:
