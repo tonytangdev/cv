@@ -294,6 +294,16 @@ const data: Data = {
       },
     },
     {
+      title: "Fonts Ninja",
+      techStack: ["Next.js", "NestJS", "TypeScript", "MySQL"],
+      description:
+        "A font discovery and licensing platform where designers find, test and license typefaces from independent foundries, with natural-language \"search by vibe\". Foundries list their typefaces for free.",
+      link: {
+        label: "fonts.ninja",
+        href: "https://fonts.ninja",
+      },
+    },
+    {
       title: "Fonts Ninja Extension",
       techStack: ["TypeScript", "Browser extension"],
       description:

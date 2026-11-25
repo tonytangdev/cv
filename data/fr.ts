@@ -295,6 +295,16 @@ const data: Data = {
       },
     },
     {
+      title: "Fonts Ninja",
+      techStack: ["Next.js", "NestJS", "TypeScript", "MySQL"],
+      description:
+        "Une plateforme de découverte et de licences de polices où les designers trouvent, testent et achètent la licence de polices de fonderies indépendantes, avec une recherche en langage naturel « par ambiance ». Les fonderies y publient leurs polices gratuitement.",
+      link: {
+        label: "fonts.ninja",
+        href: "https://fonts.ninja",
+      },
+    },
+    {
       title: "Extension Fonts Ninja",
       techStack: ["TypeScript", "Extension de navigateur"],
       description:
