@@ -1,0 +1,46 @@
+# Checks dependencies against published security advisories so you know
+# when an upgrade is due (for Next.js, run `next upgrade --agent=security`).
+#
+# - Production dependencies: the job fails on moderate or higher. GitHub
+#   emails you when a scheduled run fails.
+# - Dev dependencies (lint/build tooling): listed in the run summary only,
+#   so they don't keep the job red.
+name: Dependency audit
+
+on:
+  schedule:
+    - cron: '0 7 * * 1' # Mondays 07:00 UTC
+  pull_request:
+    paths: ['package.json', 'pnpm-lock.yaml']
+  push:
+    branches: ['main']
+    paths: ['package.json', 'pnpm-lock.yaml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit dev dependencies (report only)
+        if: always()
+        continue-on-error: true
+        run: |
+          {
+            echo '## Dev dependency advisories'
+            echo '```'
+            pnpm audit --dev 2>&1 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Audit production dependencies
+        run: pnpm audit --prod --audit-level moderate
